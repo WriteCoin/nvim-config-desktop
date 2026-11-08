@@ -61,3 +61,7 @@ vim.g.matchup_matchparen_offscreen = { method = "popup" }
 
 -- Новый интерфейс для командного режима
 require("vim._core.ui2").enable()
+
+-- Для успешной установки глобальных версий инструментов
+-- Добавляем путь к shims mise в начало PATH для Neovim
+vim.env.PATH = vim.fn.expand("~/.local/share/mise/shims") .. ":" .. vim.env.PATH
