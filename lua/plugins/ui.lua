@@ -153,4 +153,47 @@ return {
 	-- 		})
 	-- 	end,
 	-- },
+	{
+		"mjmjm0101/quickui.nvim",
+		lazy = false,
+		config = function()
+			require("quickui").setup({
+				-- Переключение панели меню
+				keymap = ",",
+				-- Стиль границы (линия, двойная линия, круг, точки, пунктир и т.п.)
+				border = "single",
+
+				-- Устранить прозрачность окон
+				-- Прозрачность от 0 до 100, число - как для панели, так и для меню, таблица - индивидуально
+				-- По умолчанию 0 для панели, 40 - для меню
+				winblend = { bar = 0, menu = 0 },
+
+				-- Подавить все привязки, кроме тех, что определены для управления меню
+				suppress_all_keys = true,
+
+				-- Таблица различных меню
+				menus = {
+					{
+						name = "&F Файл",
+						items = {
+							{ name = "&N Новый файл", cmd = ":enew<CR>", key = "<C-n>" },
+							{ name = "&O Открыть", cmd = ":e ", key = "<C-o>" },
+							{ name = "&S Сохранить", cmd = ":w<CR>", key = "<C-s>" },
+							{ name = "separator" },
+							{ name = "&Q Выйти", cmd = ":qa<CR>", key = "<C-q>", rtxt = "Ctrl-Q" },
+						},
+					},
+					{
+						name = "&E Правка",
+						items = {
+							{ name = "&U Отмена", cmd = "u", key = "<C-z>" },
+							{ name = "&R Повтор", cmd = "<C-r>", key = "<C-r>", rtxt = "Ctrl-R" },
+							{ name = "&C Копировать", cmd = '"+y', key = "<C-c>" },
+							{ name = "&P Вставить", cmd = '"+p', key = "<C-v>" },
+						},
+					},
+				},
+			})
+		end,
+	},
 }
